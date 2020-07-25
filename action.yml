@@ -1,0 +1,18 @@
+# action.yml
+name: 'Manage PR'
+description: 'Manage Pull Request'
+inputs:
+  target_repo:
+    description: The name of the repo to Manage
+    required: true
+  action_token:
+    description: Secret token for action
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    ACTION_TOKEN: ${{ inputs.action_token }}
+  args:
+    - ${{ inputs.target_repo }}
+
